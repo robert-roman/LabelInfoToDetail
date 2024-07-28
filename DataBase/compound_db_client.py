@@ -32,10 +32,9 @@ class CompoundDBClient:
             self.connection.close()
 
     def fetch_compound_by_name(self, compound_name):
-        compound_name = [compound.upper() for compound in compound_name]
         cursor = self.open_cursor()
         query_string = f"SELECT * FROM {compound_table_name} " \
-                       f"WHERE UPPER({compound_name_col_name}) = %s"
+                       f"WHERE {compound_name_col_name} = %s"
         cursor.execute(query_string, compound_name)
         row = cursor.fetchone()
         cursor.close()

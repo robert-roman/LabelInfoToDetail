@@ -13,7 +13,7 @@ currentDB = CompoundDBClient(host="localhost",
 def getIngredientsList(ingredientsString):
     ingredientsString = ingredientsString.replace('\n', ' ')
     ingredientsList = re.split(';|,|\.|\(|\)|:|  ', ingredientsString)
-    ingredientsList = [ingredient.strip() for ingredient in ingredientsList if ingredient.strip()]
+    ingredientsList = [ingredient.strip().upper() for ingredient in ingredientsList if ingredient.strip()]
     # translatedIngredientsList = [translator.translate(ingredient.strip()) for ingredient in ingredientsList]
     # return translatedIngredientsList
     return  ingredientsList
